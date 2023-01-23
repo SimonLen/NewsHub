@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from news.models import Author, Category, Post, PostCategory, Comment
-from news.resources import POST_TYPES
 
 # 1.  Создать двух пользователей (с помощью метода User.objects.create_user('username')).
 User.objects.create_user(username='Foma_KINIAEV', password='b7#iHSQ%Fv')
@@ -102,6 +101,15 @@ Author.objects.get(pk=1).update_rating()
 Author.objects.get(pk=2).update_rating()
 
 # 9.  Вывести username и рейтинг лучшего пользователя (применяя сортировку и возвращая поля первого объекта).
+top_author = Author.objects.all().order_by('-_rating').values('user', '_rating')[0]
+top_user = User.objects.get(pk=top_author["user"])
+print(f'{top_user} is the most popular author with rating: {top_author["_rating"]}.')
+
 # 10. Вывести дату добавления, username автора, рейтинг, заголовок и превью лучшей статьи,
 #     основываясь на лайках/дислайках к этой статье.
+Post.objects.order_by('-_rating').values('creation_date', 'author__user__username', '_rating', 'title')[0]
+best_post = Post.objects.all().order_by('-_rating')[0]
+best_post.preview()
+
 # 11. Вывести все комментарии (дата, пользователь, рейтинг, текст) к этой статье.
+Comment.objects.filter(post=best_post).values('creation_date', 'author__username', '_rating', 'text')
