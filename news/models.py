@@ -7,14 +7,17 @@ class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     _rating = models.IntegerField(default=0)
 
-    def update_rating(self):
-        rating_of_articles_by_author = Post.post_set.all().aggregate(Sum('_rating'))['_rating__sum'] * 3
-        rating_of_comments_by_author = Comment.comment_set.all().aggregate(Sum('_rating'))['_rating__sum']
-        rating_of_comments_under_posts_of_author = \
-            Comment.objects.filter(post__author__user=self.user).aggregate(Sum('rating'))['rating__sum']
+    def update_rating(self):  # the total rating consists of three components: r1, r2, r3
+        r1 = Post.post_set.all().aggregate(Sum('_rating'))['_rating__sum'] * 3
+        # the total rating of each author's article is multiplied by 3
 
-        self._rating = rating_of_comments_by_author + rating_of_comments_under_posts_of_author + \
-                       rating_of_articles_by_author
+        r2 = Comment.comment_set.all().aggregate(Sum('_rating'))['_rating__sum']
+        # the total rating of all the author's comments
+
+        r3 = Comment.objects.filter(post__author__user=self.user).aggregate(Sum('_rating'))['_rating__sum']
+        # the total rating of all comments to the author's articles
+
+        self._rating = r1 + r2 + r3
         self.save()
 
 
