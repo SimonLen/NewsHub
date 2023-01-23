@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Sum
 from news.resources import POST_TYPES
 
 
@@ -8,10 +9,10 @@ class Author(models.Model):
     _rating = models.IntegerField(default=0)
 
     def update_rating(self):  # the total rating consists of three components: r1, r2, r3
-        r1 = Post.post_set.all().aggregate(Sum('_rating'))['_rating__sum'] * 3
+        r1 = self.post_set.all().aggregate(Sum('_rating'))['_rating__sum'] * 3
         # the total rating of each author's article is multiplied by 3
 
-        r2 = Comment.comment_set.all().aggregate(Sum('_rating'))['_rating__sum']
+        r2 = self.user.comment_set.all().aggregate(Sum('_rating'))['_rating__sum']
         # the total rating of all the author's comments
 
         r3 = Comment.objects.filter(post__author__user=self.user).aggregate(Sum('_rating'))['_rating__sum']
