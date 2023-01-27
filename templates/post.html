@@ -5,5 +5,7 @@ Post
 {% endblock title %}
 
 {% block content %}
-<h1>{{ post }}</h1>
+<h1>{{ post.title }}</h1>
+<h4>{{ post.creation_date|date:'d M Y' }}</h4>
+<p>{{ post.text }}</p>
 {% endblock content %}
