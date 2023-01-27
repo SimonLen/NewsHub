@@ -1,5 +1,7 @@
 {% extends 'flatpages/default.html' %}
 
+{% load custom_filters %}
+
 {% block title %}
 posts
 {% endblock title %}
@@ -9,11 +11,11 @@ posts
     <p>(всего - {{ posts|length }})</p>
     {% for post in posts %}
         <hr>
-        <h5>{{ post.title }}</h5>
+        <h5>{{ post.title|censor:'нефть' }}</h5>
         <br>
         {{ post.creation_date|date:"d M Y" }}
         <br>
-        {{ post.text|truncatewords:20 }}
+        {{ post.text|truncatewords:20|censor:'нефть' }}
         <br>
     {% endfor %}
 {% endblock content %}
