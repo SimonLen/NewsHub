@@ -1,0 +1,27 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% block title %}
+posts
+{% endblock title %}
+
+{% block content %}
+    <h1>Последние новости:</h1>
+    <p>(всего - {{ filter.qs|length }})</p>
+
+    <form method="GET">
+        {{ filter.form }}
+        <input type="submit" value="Показать">
+    </form>
+
+    {% for post in filter.qs %}
+        <hr>
+        <h5>{{ post.title|censor:'нефть' }}</h5>
+        <br>
+        {{ post.creation_date|date:"d M Y" }}
+        <br>
+        {{ post.text|truncatewords:20|censor:'нефть' }}
+        <br>
+    {% endfor %}
+{% endblock content %}
