@@ -5,7 +5,7 @@ from .models import Post
 
 
 class PostFilter(FilterSet):
-    date = DateFilter(field_name='creation_date', widget=forms.DateInput(attrs={'type': 'date'}), lookup_expr='gte', label='Дата публикации ранее, чем')
+    date = DateFilter(field_name='creation_date', widget=forms.DateInput(attrs={'type': 'date'}), lookup_expr='gte', label='Опубликовано позже')
     title = CharFilter(field_name='title', lookup_expr='icontains', label='Заголовок содержит')
     author = ModelChoiceFilter(field_name='author__user__username', label='Автор', queryset=User.objects.all())
 

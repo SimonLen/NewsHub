@@ -21,9 +21,16 @@ class Author(models.Model):
         self._rating = r1 + r2 + r3
         self.save()
 
+    def __str__(self):
+        return f'{self.user}'
+
 
 class Category(models.Model):
     theme = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return f'{self.theme}'
+
 
 
 class Post(models.Model):
@@ -48,6 +55,9 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
+    def get_absolute_url(self):
+        return f'/news/{self.id}'
 
 
 class PostCategory(models.Model):
