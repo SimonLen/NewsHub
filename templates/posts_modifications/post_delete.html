@@ -7,8 +7,17 @@ Post
 {% endblock title %}
 
 {% block content %}
+<h3>Вы точно хотите удалить пост?</h3>
+<br>
+
 <h1>{{ post.title|censor:'нефть' }}</h1>
 <h4>{{ post.creation_date|date:'d M Y' }}</h4>
 <p>{{ post.text|censor:'нефть' }}</p>
+<br>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="подтвердить">
+</form>
 
 {% endblock content %}

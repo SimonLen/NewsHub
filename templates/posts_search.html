@@ -15,13 +15,38 @@ posts
         <input type="submit" value="Показать">
     </form>
 
-    {% for post in filter.qs %}
+    {% for post in posts %}
         <hr>
-        <h5>{{ post.title|censor:'нефть' }}</h5>
+        <a class="nav-link" href=../{{post.pk}}>{{ post.title|censor:'нефть' }}</a>
+<!--        <h5>{{ post.title|censor:'нефть' }}</h5>-->
         <br>
         {{ post.creation_date|date:"d M Y" }}
         <br>
         {{ post.text|truncatewords:20|censor:'нефть' }}
         <br>
     {% endfor %}
+
+    <hr>
+
+    {% if is_paginated %}
+
+        {% if page_obj.has_previous %}
+            <a href="?page=1">First</a>
+            <a href="?page={{ page_obj.previous_page_number }}"><-</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <a>{{ num }}</a>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">-></a>
+            <a href="?page={{ page_obj.paginator.num_pages}}">Last</a>
+        {% endif %}
+    {% endif %}
+
 {% endblock content %}
