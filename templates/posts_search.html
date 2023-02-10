@@ -15,7 +15,7 @@ posts
         <input type="submit" value="Показать">
     </form>
 
-    {% for post in posts %}
+    {% for post in post_search %}
         <hr>
         <a class="nav-link" href=../{{post.pk}}>{{ post.title|censor:'нефть' }}</a>
 <!--        <h5>{{ post.title|censor:'нефть' }}</h5>-->

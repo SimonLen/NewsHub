@@ -7,27 +7,29 @@ posts
 {% endblock title %}
 
 {% block content %}
-    <h1>Последние новости:</h1>
-    <p>(всего - {{ posts|length }})</p>
+    <h1>Новости категории "{{ category }}":</h1>
+    <p>(всего - {{ category_post_list|length }})</p>
 
-    {% if is_not_author %}
-    <button><a href="../sign/author/">Стать автором</a></button>
+    {% if is_not_subscribed %}
+    <button><a href="{% url 'subscribe' category.id %}">Подписаться на "{{ category }}"</a></button>
+    {% else %}
+    <p>Вы подписаны на данную категорию новостей.</p>
     {% endif %}
 
     <button><a href="{% url 'post_add' %}">Поделиться своим постом</a></button>
 
     <ul class="list-group list-group-flash">
-        {% for post in posts %}
+        {% for post in category_post_list %}
             <li class="list-group-item">
                 <small class="fw-bold">{{ post.creation_date|date:"d M Y" }}</small>
-                <a href={{post.id}}>{{ post.title|censor:'нефть' }}</a>
+                <a href="../{{post.id}}">{{ post.title }}</a>
                 <small class="text-muted">(автор: {{ post.author }})</small><br>
-                <small class="fw-bold">категории:
+                <small class="fw-bold">Категории:
                     {% for category in post.category.all %}
                         <a href="{% url 'category_list' category.id %}">{{ category }}</a>
                     {% endfor %}
                 </small>
-                <p>{{ post.text|truncatewords:20|censor:'нефть' }}</p>
+                <p>{{ post.text|truncatewords:20 }}</p>
 
                 <button><a href="{% url 'post_edit' post.id %}">Редактировать</a></button>
                 <button><a href="{% url 'post_delete' post.id %}">Удалить</a></button>
