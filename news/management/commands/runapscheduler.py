@@ -10,7 +10,7 @@ from apscheduler.triggers.cron import CronTrigger
 from django.core.management.base import BaseCommand
 from django_apscheduler.jobstores import DjangoJobStore
 from django_apscheduler.models import DjangoJobExecution
-from .models import Category, Post
+from news.models import Category, Post
 from NewsHub import settings
 
 logger = logging.getLogger(__name__)
@@ -22,8 +22,8 @@ def my_job():
     today = datetime.datetime.now()
     last_week = today - datetime.timedelta(days=7)
     posts = Post.objects.filter(creation_date__gte=last_week)
-    categories = set(Post.category.vaues_list('category__name', flat=True))
-    subscribers = set(Category.objects.filter(name__in=categories).values_list('subscribers__email', flat=True))
+    categories = set(posts.values_list('category__theme', flat=True))
+    subscribers = set(Category.objects.filter(theme__in=categories).values_list('subscribers__email', flat=True))
     html_content = render_to_string(
         'daily_post.html',
         {
@@ -35,8 +35,10 @@ def my_job():
         subject='Статьи за неделю',
         body='',
         from_email=settings.DEFAULT_FROM_EMAIL,
-        to=subscribers
+        to=subscribers,
     )
+    msg.attach_alternative(html_content, 'text/html')
+    msg.send()
 
 
 # функция, которая будет удалять неактуальные задачи
@@ -55,7 +57,9 @@ class Command(BaseCommand):
         # добавляем работу нашему задачнику
         scheduler.add_job(
             my_job,
-            trigger=CronTrigger(second="*/10"),
+            trigger=CronTrigger(
+                day_of_week="sat", hour="10", minute="00"
+            ),
             # То же, что и интервал, но задача тригера таким образом более понятна django
             id="my_job",  # уникальный айди
             max_instances=1,
