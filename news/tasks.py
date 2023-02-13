@@ -28,3 +28,25 @@ def new_post_in_category_notifier():
     )
     msg.attach_alternative(html_content, 'text/html')
     msg.send()
+
+
+@shared_task
+def send_new_post_notification(preview, pk, title, subs):
+    html_content = render_to_string(
+        'post_created_email_celery.html',
+        {
+            'text': preview,
+            'link': f'{settings.SITE_URL}/news/{pk}',
+        }
+    )
+
+    msg = EmailMultiAlternatives(
+        subject=title,
+        body='',
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=subs,
+    )
+
+    msg.attach_alternative(html_content, 'text/html')
+    msg.send()
+

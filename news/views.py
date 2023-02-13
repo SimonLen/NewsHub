@@ -6,6 +6,8 @@ from django.core.mail import send_mail, EmailMultiAlternatives
 from .models import Post, Category
 from .filters import PostFilter
 from .forms import PostForm
+from .tasks import send_new_post_notification
+from NewsHub import settings
 
 
 class PostsList(ListView):
@@ -50,6 +52,17 @@ class PostAddView(PermissionRequiredMixin, CreateView):
     template_name = 'posts_modifications/post_add.html'
     form_class = PostForm
     permission_required = ('news.add_post', )
+
+    def form_valid(self, form_class):
+        post = form_class.save()
+        categories = post.category.all()
+        subscribers = []
+        for category in categories:
+            subscribers += category.subscribers.all()
+
+        subscribers = [s.email for s in subscribers]
+        send_new_post_notification.delay(preview=post.preview(), pk=post.pk, title=post.title, subs=subscribers)
+        return redirect(f'{settings.SITE_URL}/news/{post.pk}')
 
 
 class PostEditView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
