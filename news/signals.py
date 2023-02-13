@@ -12,7 +12,6 @@ def send_notification(preview, pk, title, subscribers):
         {
             'text': preview,
             'link': f'{settings.SITE_URL}/news/{pk}',
-            # 'username': User.objects.get(email=)
         }
     )
 
