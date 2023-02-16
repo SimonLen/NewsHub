@@ -1,9 +1,10 @@
 from django.urls import path
 from .views import PostsList, PostDetail, PostSearch, PostAddView, PostDeleteView, PostEditView, CategoryPostsList, subscribe
+from django.views.decorators.cache import cache_page
 
 
 urlpatterns = [
-   path('', PostsList.as_view()),
+   path('', cache_page(60)(PostsList.as_view())),
    path('<int:pk>', PostDetail.as_view()),
    path('search/', PostSearch.as_view()),
    path('add/', PostAddView.as_view(), name='post_add'),
