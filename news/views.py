@@ -1,8 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
+from django.views import View
 from django.shortcuts import get_object_or_404, render, redirect
 from django.core.cache import cache
+from django.utils.translation import gettext as _
+from django.http import HttpResponse
 from django.core.mail import send_mail, EmailMultiAlternatives
 from .models import Post, Category
 from .filters import PostFilter
@@ -117,3 +120,11 @@ def subscribe(request, pk):
     category.subscribers.add(user)
     message = "Вы успешно подписались на рассылку новостей категории"
     return render(request, 'news/subscribe.html', {'category': category, 'message': message})
+
+
+class Index(View):
+    def get(self, request):
+        string = _('Hello world')
+
+        return HttpResponse(string)
+
