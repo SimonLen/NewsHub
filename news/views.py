@@ -31,7 +31,6 @@ class PostDetail(DetailView):
     model = Post
     template_name = 'post.html'
     context_object_name = 'post'
-    # queryset = Post.objects.all()
 
     def get_object(self, *args, **kwargs):
         obj = cache.get(f'post-{self.kwargs["pk"]}', None)
@@ -118,13 +117,5 @@ def subscribe(request, pk):
     user = request.user
     category = Category.objects.get(id=pk)
     category.subscribers.add(user)
-    message = "Вы успешно подписались на рассылку новостей категории"
+    message = _("You have successfully subscribed to the newsletter category")
     return render(request, 'news/subscribe.html', {'category': category, 'message': message})
-
-
-class Index(View):
-    def get(self, request):
-        string = _('Hello world')
-
-        return HttpResponse(string)
-

@@ -1,5 +1,6 @@
 {% extends 'flatpages/default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
 
 {% block title %}
@@ -7,30 +8,30 @@ posts
 {% endblock title %}
 
 {% block content %}
-    <h1>Последние новости:</h1>
-    <p>(всего - {{ posts|length }})</p>
+    <h1>{% trans "Latest news:" %}</h1>
+    <p>({% trans "total" %} - {{ posts|length }})</p>
 
     {% if is_not_author %}
-    <button><a href="../sign/author/">Стать автором</a></button>
+    <button><a href="../sign/author/">{% trans "Become an author" %}</a></button>
     {% endif %}
 
-    <button><a href="{% url 'post_add' %}">Поделиться своим постом</a></button>
+    <button><a href="{% url 'post_add' %}">{% trans "Share your post" %}</a></button>
 
     <ul class="list-group list-group-flash">
         {% for post in posts %}
             <li class="list-group-item">
                 <small class="fw-bold">{{ post.creation_date|date:"d M Y" }}</small>
                 <a href={{post.id}}>{{ post.title|censor:'нефть' }}</a>
-                <small class="text-muted">(автор: {{ post.author }})</small><br>
-                <small class="fw-bold">категории:
+                <small class="text-muted">({% trans "author:" %} {{ post.author }})</small><br>
+                <small class="fw-bold">{% trans "Categories:" %}
                     {% for category in post.category.all %}
                         <a href="{% url 'category_list' category.id %}">{{ category }}</a>
                     {% endfor %}
                 </small>
                 <p>{{ post.text|truncatewords:20|censor:'нефть' }}</p>
 
-                <button><a href="{% url 'post_edit' post.id %}">Редактировать</a></button>
-                <button><a href="{% url 'post_delete' post.id %}">Удалить</a></button>
+                <button><a href="{% url 'post_edit' post.id %}">{% trans "Edit" %}</a></button>
+                <button><a href="{% url 'post_delete' post.id %}">{% trans "Delete" %}</a></button>
             </li>
         {% endfor %}
     </ul>
@@ -38,7 +39,7 @@ posts
     {% if is_paginated %}
 
         {% if page_obj.has_previous %}
-            <a href="?page=1">First</a>
+            <a href="?page=1">{% trans "First" %}</a>
             <a href="?page={{ page_obj.previous_page_number }}"><-</a>
         {% endif %}
 
@@ -52,7 +53,7 @@ posts
 
         {% if page_obj.has_next %}
             <a href="?page={{ page_obj.next_page_number }}">-></a>
-            <a href="?page={{ page_obj.paginator.num_pages}}">Last</a>
+            <a href="?page={{ page_obj.paginator.num_pages}}">{% trans "Last" %}</a>
         {% endif %}
     {% endif %}
 

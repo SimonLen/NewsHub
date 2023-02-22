@@ -1,5 +1,6 @@
 {% extends 'flatpages/default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
 
 {% block title %}
@@ -7,7 +8,7 @@ Post
 {% endblock title %}
 
 {% block content %}
-<h3>Вы точно хотите удалить пост?</h3>
+<h3>{% trans "Are you sure you want to delete the post?" %}</h3>
 <br>
 
 <h1>{{ post.title|censor:'нефть' }}</h1>
@@ -17,7 +18,7 @@ Post
 
 <form method="POST">
     {% csrf_token %}
-    <input type="submit" value="подтвердить">
+    <input type="submit" value="{% trans 'Submit' %}">
 </form>
 
 {% endblock content %}

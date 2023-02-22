@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import Author, Category, Post, PostCategory, Comment
+from modeltranslation.admin import TranslationAdmin
 
 
 def zero_rating(modeladmin, request, queryset):
@@ -14,10 +15,16 @@ class PostAdmin(admin.ModelAdmin):
     actions = [zero_rating]
 
 
+class PostTranslationAdmin(TranslationAdmin):
+    model = Post
+
+
+class CategoryTranslationAdmin(TranslationAdmin):
+    model = Category
+
+
 admin.site.register(Author)
 admin.site.register(Category)
 admin.site.register(Post, PostAdmin)
 admin.site.register(PostCategory)
 admin.site.register(Comment)
-
-# Register your models here.

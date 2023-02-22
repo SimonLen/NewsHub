@@ -1,5 +1,6 @@
 {% extends 'flatpages/default.html' %}
 
+{% load i18n %}
 {% load custom_filters %}
 
 {% block title %}
@@ -7,8 +8,8 @@ posts
 {% endblock title %}
 
 {% block content %}
-    <h1>Последние новости:</h1>
-    <p>(всего - {{ filter.qs|length }})</p>
+    <h1>{% trans "Latest news:" %}</h1>
+    <p>({% trans "total" %} - {{ filter.qs|length }})</p>
 
     <form method="GET">
         {{ filter.form }}
@@ -31,7 +32,7 @@ posts
     {% if is_paginated %}
 
         {% if page_obj.has_previous %}
-            <a href="?page=1">First</a>
+            <a href="?page=1">{% trans "First" %}</a>
             <a href="?page={{ page_obj.previous_page_number }}"><-</a>
         {% endif %}
 
@@ -45,7 +46,7 @@ posts
 
         {% if page_obj.has_next %}
             <a href="?page={{ page_obj.next_page_number }}">-></a>
-            <a href="?page={{ page_obj.paginator.num_pages}}">Last</a>
+            <a href="?page={{ page_obj.paginator.num_pages}}">{% trans "Last" %}</a>
         {% endif %}
     {% endif %}
 

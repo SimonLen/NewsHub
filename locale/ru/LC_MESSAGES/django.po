@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-21 20:25+0000\n"
+"POT-Creation-Date: 2023-02-22 16:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,9 +24,58 @@ msgstr ""
 msgid "Advanced options"
 msgstr "Дополнительные опции"
 
-#: news/views.py:127
-msgid "Hello world"
-msgstr "Привет мир"
+#: news/views.py:120
+msgid "You have successfully subscribed to the newsletter category"
+msgstr "Вы успешно подписались на рассылку новостей категории"
+
+#: templates/category_list.html:11
+msgid "News in category"
+msgstr "Новости категории"
+
+#: templates/category_list.html:12 templates/posts.html:12
+#: templates/posts_search.html:12
+msgid "total"
+msgstr "всего"
+
+#: templates/category_list.html:15
+msgid "Subscribe to"
+msgstr "Подписаться на"
+
+#: templates/category_list.html:17
+#, fuzzy
+#| msgid "You have successfully subscribed to the newsletter category"
+msgid "You are subscribed to this category of news."
+msgstr "Вы успешно подписались на рассылку новостей категории"
+
+#: templates/category_list.html:20 templates/posts.html:18
+msgid "Share your post"
+msgstr "Поделиться своим постом"
+
+#: templates/category_list.html:27 templates/posts.html:25
+msgid "author:"
+msgstr "автор:"
+
+#: templates/category_list.html:28 templates/posts.html:26
+msgid "Categories:"
+msgstr "Категории:"
+
+#: templates/category_list.html:35 templates/posts.html:33
+msgid "Edit"
+msgstr "Редактировать"
+
+#: templates/category_list.html:36 templates/posts.html:34
+msgid "Delete"
+msgstr "Удалить"
+
+#: templates/category_list.html:44 templates/posts.html:42
+#: templates/posts_search.html:35
+msgid "First"
+msgstr "Первая"
+
+#: templates/category_list.html:58 templates/posts.html:56
+#: templates/posts_search.html:49
+msgid "Last"
+msgstr "Последняя"
 
 #: templates/flatpages/default.html:20
 msgid "News Hub"
@@ -47,3 +96,23 @@ msgstr "Выход"
 #: templates/flatpages/default.html:39
 msgid "Log in"
 msgstr "Вход"
+
+#: templates/posts.html:11 templates/posts_search.html:11
+msgid "Latest news:"
+msgstr "Последние новости:"
+
+#: templates/posts.html:15
+msgid "Become an author"
+msgstr "Стать автором"
+
+#: templates/posts_modifications/post_add.html:8
+msgid "Add post"
+msgstr "Добавление новости:"
+
+#: templates/posts_modifications/post_delete.html:10
+msgid "Are you sure you want to delete the post?"
+msgstr "Вы точно хотите удалить пост?"
+
+#: templates/posts_modifications/post_delete.html:20
+msgid "Submit"
+msgstr "Подтвердить"

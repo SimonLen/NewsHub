@@ -1,0 +1,224 @@
+2023-02-22 15:45:17,486  ERROR  Internal Server Error: /  /Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/utils/log.py  (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError("Invalid block tag on line 33: 'tarns', expected 'empty' or 'endfor'. Did you forget to register or load this tag?"), <traceback object at 0x10fe2f800>)
+Traceback (most recent call last):
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'tarns'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 854, in do_for
+    nodelist_loop = parser.parse(
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 33: 'tarns', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-02-22 15:45:17,496  ERROR  "GET / HTTP/1.1" 500 223120  /Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py  None
+2023-02-22 15:55:18,480  ERROR  Internal Server Error: /  /Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/utils/log.py  (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError("Invalid block tag on line 33: 'tarns', expected 'empty' or 'endfor'. Did you forget to register or load this tag?"), <traceback object at 0x109247880>)
+Traceback (most recent call last):
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'tarns'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/defaulttags.py", line 854, in do_for
+    nodelist_loop = parser.parse(
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 33: 'tarns', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2023-02-22 15:55:18,489  ERROR  "GET / HTTP/1.1" 500 223120  /Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py  None
+2023-02-22 16:36:42,567  ERROR  Internal Server Error: /news/add/  /Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/utils/log.py  (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError("Invalid block tag on line 8: 'trans', expected 'endblock'. Did you forget to register or load this tag?"), <traceback object at 0x103d9f840>)
+Traceback (most recent call last):
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'trans'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 8: 'trans', expected 'endblock'. Did you forget to register or load this tag?
+2023-02-22 16:36:42,576  ERROR  "GET /news/add/ HTTP/1.1" 500 159544  /Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py  None
+2023-02-22 16:38:18,615  ERROR  Internal Server Error: /news/delete/1  /Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/utils/log.py  (<class 'django.template.exceptions.TemplateSyntaxError'>, TemplateSyntaxError("Invalid block tag on line 10: 'trans', expected 'endblock'. Did you forget to register or load this tag?"), <traceback object at 0x107837040>)
+Traceback (most recent call last):
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 505, in parse
+    compile_func = self.tags[command]
+KeyError: 'trans'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/engine.py", line 175, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/engine.py", line 157, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 200, in compile_nodelist
+    return parser.parse()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 293, in do_extends
+    nodelist = parser.parse()
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 513, in parse
+    raise self.error(token, e)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 511, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/loader_tags.py", line 232, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 507, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/template/base.py", line 558, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 10: 'trans', expected 'endblock'. Did you forget to register or load this tag?
+2023-02-22 16:38:18,621  ERROR  "GET /news/delete/1 HTTP/1.1" 500 165406  /Users/semyonsorokin/dev/NewsHub/venv/lib/python3.10/site-packages/django/core/servers/basehttp.py  None
