@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load i18n %}
+{% load tz %}
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -10,11 +11,14 @@
         {% load static %}
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+        <style>
+            body {background-color:
+                {% if current_time.hour >= 19 or current_time.hour <= 7 %} darkcyan {% else %} powderblue {% endif %};
+            }
+        </style>
     </head>
     <body>
         <!-- Responsive navbar-->
-        {% load cache %}
-            {% cache 600 navbar %}
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
                <div class="container">
                    <a class="nav-link" href="http://127.0.0.1:8000/news/">{% trans "News Hub" %}</a>
@@ -58,7 +62,6 @@
                     </form>
                </div>
             </nav>
-            {% endcache %}
         <!-- Page content-->
             <div class="container">
                <div class="row">

@@ -5,6 +5,7 @@ from django.views import View
 from django.shortcuts import get_object_or_404, render, redirect
 from django.core.cache import cache
 from django.utils.translation import gettext as _
+from django.utils import timezone
 from django.http import HttpResponse
 from django.core.mail import send_mail, EmailMultiAlternatives
 from .models import Post, Category
@@ -12,6 +13,7 @@ from .filters import PostFilter
 from .forms import PostForm
 from .tasks import send_new_post_notification
 from NewsHub import settings
+import pytz
 
 
 class PostsList(ListView):
@@ -24,7 +26,13 @@ class PostsList(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['is_not_author'] = not self.request.user.groups.filter(name='author').exists()
+        context['current_time'] = timezone.now()
+        context['timezones'] = pytz.common_timezones
         return context
+
+    def post(self, request, **kwargs):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect('/news/')
 
 
 class PostDetail(DetailView):
